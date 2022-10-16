@@ -1,0 +1,14 @@
+######################################################################################
+############ COSAS  TENER EN CUENTA PARA PARA CONEXION GRIPPER CON PYTHON ############
+######################################################################################
+
+Para sacar los datos es probable que necesite conectarme con algo de:
+>> SamplerSoftware/Sampler.py-> self._sampling_data 
+tambien puede ser el self._make_sample -> mirar en ese codigo lineas 160
+
+
+
+
+Si me meto en el SamplerSoftware/Sampler_GUI.py-> self._sampling_data 
+self.sampler.sampling_data() -> esta funcion parece que coge todos los datos del sampling, por lo que tengo que 
+conseguir transformar esto en pandas(probablemente para tratarlo de la manera más rapida
