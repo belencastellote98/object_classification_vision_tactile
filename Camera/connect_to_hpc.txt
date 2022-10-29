@@ -1,4 +1,5 @@
 In order to access the HPC
+>> sudo openconnect vpn.dtu.dk --os win
 >> ssh s212759@login1.hpc.dtu.dk 
 >> voltash
 In a new terminal:

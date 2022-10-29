@@ -6,7 +6,7 @@ import numpy as np
 import skimage.io
 import matplotlib
 import matplotlib.pyplot as plt
-
+import time
 # Root directory of the project
 ROOT_DIR = os.path.abspath(".")
 
@@ -124,8 +124,9 @@ try:
         # Convert images to numpy arrays
         image = np.asanyarray(color_frame.get_data())
         # Run detection
+        start_time = time.time()
         results = model.detect([image], verbose=1)
-
+        print("--- %s seconds ---" % (time.time() - start_time))
         # Visualize results
         r = results[0]
         # visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
