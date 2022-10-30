@@ -102,34 +102,3 @@ def main():
 if __name__ == '__main__':
     # args = parse_opt()
     main()
-
-
-
-    
-
-# try:
-#     while True:
-
-#         # Wait for a coherent pair of frames: depth and color
-#         frames = pipeline.wait_for_frames()
-#         color_frame = frames.get_color_frame()
-        
-#         if not color_frame:
-#             continue
-
-#         # Convert images to numpy arrays
-#         image = np.asanyarray(color_frame.get_data())
-#         # Run detection
-#         start_time = time.time()
-#         results = model.detect([image], verbose=1)
-#         print("--- %s seconds ---" % (time.time() - start_time))
-#         # Visualize results
-#         r = results[0]
-#         # visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
-#         #                             class_names, r['scores'], show_mask=False)
-#         # Show images
-#         cv2.namedWindow('RealSense', cv2.WINDOW_AUTOSIZE)
-#         visualize.display_instances_cv2(image, r['rois'], r['class_ids'], class_names,
-#                                     class_id_wanted, r['scores'], colors=colors)
-#         # cv2.imshow('RealSense', color_image)
-#         cv2.waitKey(1)  
