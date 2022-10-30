@@ -3,12 +3,12 @@ This repository is made in order to simplify the setup of real-sense camera and 
 
 # Table of Contents
 
-1. [Set up of the repository and libraries used](#repository)
-2. [Set-up of Gripper from Graspian](#setupgripper)
-3. [Set-up of Camera Realsense depth camera D435](#setupcam)
-4. [Train fasterrcnn_resnet50_fpn model from pytorch](#caminference)
-5. [Trained data inference code with realsense](#caminference)
-6. [Classifier selection](#classifier)
+1. [Set up of the repository and libraries used](#set-up-of-the-repository-and-libraries-used)
+2. [Set-up of Gripper from Graspian](#set-up-of-gripper-from-graspian)
+3. [Set-up of Camera Realsense depth camera D435](#set-up-of-camera-realsense-depth-camera-d435)
+4. [Train fasterrcnn_resnet50_fpn model from pytorch](#train-fasterrcnn_resnert50_fpn-model-from-pytorch)
+5. [Trained data inference code with realsense](#trained-data-inference-code-with-realsense)
+6. [Classifier selection](#classifier-selection)
 
 
 ## Set up of the repository and libraries used
