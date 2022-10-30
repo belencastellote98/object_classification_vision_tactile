@@ -6,9 +6,9 @@ This repository is made in order to simplify the setup of real-sense camera and 
 1. [Set up of the repository and libraries used](#repository)
 2. [Set-up of Gripper from Graspian](#setupgripper)
 3. [Set-up of Camera Realsense depth camera D435](#setupcam)
-4. [Trained data inference code with realsense](#caminference)
-5. [Classifier selection](#mracLaunch)
-6. [Setup of the camera driver](#cameraDriver)
+4. [Train fasterrcnn_resnet50_fpn model from pytorch](#caminference)
+5. [Trained data inference code with realsense](#caminference)
+6. [Classifier selection](#classifier)
 
 
 ## Set up of the repository and libraries used
@@ -76,4 +76,20 @@ rs-enumerate-devices
 
 Open the connect_realsense.py, check the device number and if it is the same, run the code to check that the camera is correctly connected. If more help is needed, check on the examples given by the library [link](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/python/examples)
 
+## Train fasterrcnn_resnet50_fpn model from pytorch
+The data was trained following the notebook given in the repo: [A Simple Pipeline to Train PyTorch FasterRCNN Model](https://github.com/sovit-123/fasterrcnn-pytorch-training-pipeline). That notebook is saved in this repo in Camera/results_camera/train_model
+- Wandb: software to save the models. It is downloaded in .pth format.[link](https://wandb.ai/home)
+- Roboflow: open dataset platform for object detection. See the used dataset for this project here [link](https://app.roboflow.com/ds/3llQvc8hux?key=vuPMmzDcdu)
+After the dataset is trained it is saved into Wandb. 
+
+## Trained data inference code with realsense
+Trained model is too heavy for GitHub. Click [here](https://drive.google.com/file/d/16cBtBJMuP7QN0XNezd8HHPmG1Ao24zVu/view?usp=share_link) to get the trained weights. It should be saved in Camera/results_camera
+Run the inference code to get the results:
+```
+python3 inference.py
+```
+
+**ADD PICTURE FOR RESULT ONCE THE DETECTED CODE IS RIGHT**
+
+## Classifier selection
 
