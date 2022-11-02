@@ -3,7 +3,7 @@ import cv2
 
 def inference_annotations(
     outputs, detection_threshold, classes,
-    colors, orig_image
+    colors, orig_image, offset
 ):
     boxes = outputs[0]['boxes'].data.numpy()
     scores = outputs[0]['scores'].data.numpy()
@@ -19,7 +19,7 @@ def inference_annotations(
     # Draw the bounding boxes and write the class name on top of it.
     j=0
     for box, score in zip(draw_boxes,scores):
-        p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
+        p1, p2 = (int(box[0]), int(box[1]+offset[0])), (int(box[2]), int(box[3]+offset[0]))
         class_name = pred_classes[j]
         color = colors[classes.index(class_name)]
         cv2.rectangle(

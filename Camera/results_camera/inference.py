@@ -57,7 +57,7 @@ def main():
 
     # Start streaming
     pipeline.start(config)
-
+    offset = [250,420]
 
     while True:
         # Wait for a coherent pair of frames: depth and color
@@ -72,10 +72,12 @@ def main():
 
         # image = cv2.imread(image)
         orig_image = image.copy()
+        crop_im = orig_image[offset[0]:offset[1],:]
         
         # BGR to RGB
-        image = cv2.cvtColor(orig_image, cv2.COLOR_BGR2RGB)
+        image = cv2.cvtColor(crop_im, cv2.COLOR_BGR2RGB)
         image = infer_transforms(image)
+
 
         # Add batch dimension.
         image = torch.unsqueeze(image, 0)
@@ -90,7 +92,7 @@ def main():
         if len(outputs[0]['boxes']) != 0:
             orig_image = inference_annotations(
                 outputs, detection_threshold, CLASSES,
-                COLORS, orig_image
+                COLORS, orig_image, offset
             )
             cv2.imshow('Prediction', orig_image)
             cv2.waitKey(1)
