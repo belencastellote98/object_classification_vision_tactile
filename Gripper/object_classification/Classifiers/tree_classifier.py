@@ -63,11 +63,12 @@ classNames = ['hard', 'soft']
     
 # Number data objects, attributes, and classes
 N, M = X.shape
+print(N)
 C = len(classNames)
 
 # Entropy regression tree
 criterion='entropy'
-dtc = tree.DecisionTreeClassifier(criterion=criterion, min_samples_split=2)
+dtc = tree.DecisionTreeClassifier(criterion=criterion, min_samples_split=5)
 dtc = tree.DecisionTreeClassifier(criterion=criterion, min_samples_split=1.0/N)
 dtc = dtc.fit(X,y)
 
@@ -75,4 +76,4 @@ x = test()
 print(x)
 x_class = dtc.predict([x])
 print(x_class)
-# print("The object is identified as: " + dataobjectNames[x_class.astype(int)])
+print("The object is identified as: " + dataobjectNames[x_class[0].astype(int)])

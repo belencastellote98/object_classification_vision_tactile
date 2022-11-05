@@ -1,10 +1,10 @@
-#!/usr/bin/env python
 import serial
 import time
 
 
 port_name = "/dev/ttyACM0"
 
+ 
 
 BAUD = 500000
 
@@ -17,11 +17,6 @@ PORT_WRITE_TIMEOUT=1
 serial_port = serial.Serial(port_name,BAUD,timeout=PORT_TIMEOUT,write_timeout=PORT_WRITE_TIMEOUT)
 serial_port.reset_input_buffer()
 
-initialized = False
-gripperOpen = True
-msg2Controller = ""
-last_line = ""
-
 def send(string):
   print(f"Send: '{string}'")
   try:
@@ -32,39 +27,33 @@ def send(string):
     print("Send failed!")
 
   return False
-# def wait ():
-#   fl=0
-#   s=0
-#   while serial_port.inWaiting() > 0 and fl<4:
-#     print(serial_port.inWaiting())
-#     time.sleep(1)
-#     if s == serial_port.inWaiting() :
-#       fl+=1
-#       s=serial_port.inWaiting() 
-#     else:
-#       fl=0
-#     s=serial_port.inWaiting()   
+
+last_line = ""
 
 def test():
-
-  send("init\n")
-  time.sleep (0.001)
-  incomingByte = serial_port.readline()
-  if incomingByte==b'':
-    send("sub S1 force all\n")
-    time.sleep(0.001)
-    send("sub S2 force all\n")
-    time.sleep(0.001)
-  send("sub-clear\n")
-  time.sleep(0.001)
-  send("tact zcal\n")
-  time.sleep(0.001)
-  send("set pub-period 30\n")
-  time.sleep(0.001)
+  send ("init\n")
+  time.sleep (0.1)
+  # send("m home\n")
+  # time.sleep (1)
   send("pub-on\n")
-  time.sleep(0.001)
+  time.sleep(1)
+  incomingByte = serial_port.readline()
+  print(incomingByte)
+  time.sleep(1)
+  if incomingByte==b'unknown command: init\n' or incomingByte==b'debug: ROBOTBRAG SETUP\n':
+    send("sub S1 force all\n")
+    time.sleep(0.1)
+    send("sub S2 force all\n")
+    time.sleep(0.1)
+
+  send("tact zcal\n")
+  time.sleep(0.1)
+  send("set pub-period 30\n")
+  time.sleep(0.1)
+  send("pub-on\n")
+  time.sleep(0.1)
   send("char-obj 0\n")
-  time.sleep(0.001)
+  time.sleep(1)
   gripper_testing = True
   max=0
   save_var=[]
@@ -75,7 +64,7 @@ def test():
       data_str = list(last_line.split(" "))
       data_float = [float(x) for x in data_str[:-1]]
       if max<sum(data_float):
-        save_var = data_float.copy() # This is the data that should be send to the test
+        save_var = data_float # This is the data that should be send to the test
         max = sum(data_float)
 
     if incomingByte==b'WARNING: EMCY: 0xA1 | 0x84F0 | 0x2001   -  Unknown\n':
@@ -85,10 +74,8 @@ def test():
   # # x = input()
   # # send(f"{x}\n")
 
-
   serial_port.close()
+  # time.sleep(1)
   return save_var
 
-  
-x = test()
-print(x)
+
