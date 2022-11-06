@@ -273,7 +273,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=60104",
+                "PLATFORMIO=60105",
                 "__MK66FX1M0__",
                 "ARDUINO_TEENSY36",
                 "CIRCUIT_VERSION=2",
