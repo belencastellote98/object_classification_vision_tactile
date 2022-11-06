@@ -1,0 +1,10 @@
+In order to access the HPC
+>> sudo openconnect vpn.dtu.dk --os win
+>> ssh s212759@login1.hpc.dtu.dk 
+>> voltash
+In a new terminal:
+>> ssh s212759@login1.hpc.dtu.dk -g -L2800:n-62-20-1:2800 -N
+In the previous terminal 
+>> jupyter ## not sure about this part but cant try because i have not dtu secure
+Si no funciona eso es porque tengo que copiar el segundo link y pegarlo en nueva pestaña del buscador.
+

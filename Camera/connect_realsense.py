@@ -61,6 +61,6 @@ try:
         cv2.waitKey(1)
 
 finally:
-
+    
     # Stop streaming
     pipeline.stop()
