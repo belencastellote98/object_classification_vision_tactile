@@ -5,6 +5,28 @@ In order to access the HPC
 In a new terminal:
 >> ssh s212759@login1.hpc.dtu.dk -g -L2800:n-62-20-1:2800 -N
 In the previous terminal 
->> jupyter ## not sure about this part but cant try because i have not dtu secure
+>> module load python3 3.8.11
+>> python3 -m pip install --user jupyterlab
+>> jupyter 
 Si no funciona eso es porque tengo que copiar el segundo link y pegarlo en nueva pestaña del buscador.
 
+
+Para copiar los archivos en la carpeta de jupyter:
+- Arrastrar los archivo - no carpetas porque no lo soporta	
+
+
+Para mandar archivo batch:
+- Ahora mismo ya tengo las imagenes subidas en jupyter y tal-> cambiar lo que necesite desde ahi
+- Cuando quiera mandar el bach:
+- Modificar primero el submit_ce.sh
+ >> vim submit_ce.sh
+  Pulsar i para modificar. Cambiar nombre si quiero. Mirar los gpu a utilizar, memoria y todo eso
+  Cuando ya este too a gusto:
+ >> bsub < submit_ce.sh
+ Para comprobar si el batch ha funcionado o no:
+ >> bstat
+ El proyecto que no se sube bien, suele fallar a los 10 minutos como mucho, sino suele funcionar
+ 
+ Si quiero quitar un proyecto 
+ >> bkill <JOBID>
+ 

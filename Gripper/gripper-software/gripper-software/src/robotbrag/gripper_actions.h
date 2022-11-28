@@ -25,7 +25,7 @@ enum detetion_result {
     DETECT_RES_TORQUE=-2,
     DETECT_RES_TIMEOUT=-3
 };
-detetion_result tactile_detect(float detection_force=0.05, float speed=50);
+detetion_result tactile_detect(float detection_force=0.1, float speed=50);
 
 float tactile_squeeze();
 void tactile_close(float force, float stop_force=0.2);

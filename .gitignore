@@ -1,0 +1,12 @@
+Camera/results_camera/ball_can_bottle_tom_32_640x640.pth
+Camera/results_camera/other_trainings
+Gripper/object_classification/Classifiers/Dataset.xlsx
+Gripper/object_classification/Classifiers/Dataset_old.xlsx
+Gripper/object_classification/Classifiers/previous_dataset
+Gripper/object_classification/Classifiers/tree_test_full_bottle.csv.xlsx
+__pycache__
+Gripper/object_classification/cleaning
+Gripper/object_classification/Others
+.pio/
+*.pth
+Gripper/GraspianGripperSoftware/SamplerSoftware/tmp

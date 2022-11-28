@@ -21,6 +21,7 @@ void ForceController::init_control(float force){
 
 void ForceController::control_loop(std::function<bool()> check_func, bool settle_check){
     debug_stream << "Control loop called\n";
+    unsigned long timeStart = millis();
     time_last_step = millis();
     while(1)
     {
@@ -28,7 +29,7 @@ void ForceController::control_loop(std::function<bool()> check_func, bool settle
             Threads::Scope scope(interupt_lock);
             if(stop_flag) break;
         }
-
+        
         time_t elapsed = millis()-time_last_step;
         if(elapsed >= T_ms){
             if(elapsed > T_ms+10) warning_stream << "Force Control - update time not kept! ("<< elapsed << "ms)\n";
@@ -42,7 +43,7 @@ void ForceController::control_loop(std::function<bool()> check_func, bool settle
             }
         if(check_func && !check_func()) break; // check_func may try to acquire interupt_lock itself
         }
-
+        if(millis()-timeStart>5000) break;
         delay(0.1*T_ms); // Give time for other threads to aquire lock
     }
     debug_stream << "Control stopped\n";

@@ -38,7 +38,7 @@ detetion_result tactile_detect(float detection_force, float speed)
 
     detetion_result result = DETECT_RES_NONE;
 
-    constexpr int DETECTIONS_NEEDED = 3;
+    constexpr int DETECTIONS_NEEDED = 10;
     float init_pos = hw::motor()->read_position();
     float timeout_ms = 1.5 * init_pos / speed * 1000;
     int detect_count[] = {0, 0};

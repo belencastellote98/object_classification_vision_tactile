@@ -19,7 +19,7 @@ def inference_annotations(
     # Draw the bounding boxes and write the class name on top of it.
     j=0
     for box, score in zip(draw_boxes,scores):
-        p1, p2 = (int(box[0]), int(box[1]+offset[0])), (int(box[2]), int(box[3]+offset[0]))
+        p1, p2 = (int(box[0]+offset[1][0]), int(box[1]+offset[0][0])), (int(box[2]+offset[1][0]), int(box[3]+offset[0][0]))
         class_name = pred_classes[j]
         color = colors[classes.index(class_name)]
         cv2.rectangle(

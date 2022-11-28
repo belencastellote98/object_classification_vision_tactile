@@ -31,6 +31,8 @@ void Detect_Controller::control_step(float des_force, const time_t t_elapsed, fl
         motor->velocity_control_set(cmd_vel);
 
         // TODO proper computation on whether control has reach it's goal (vel should be 0 and des_force=0 should be possible)
+        // if(!has_settled && abs(e[0]/des_force) < 0.05){
+            
         if(!has_settled && abs(e[0]/des_force) < 0.05){
             has_settled=true;
             // debug_stream << "Force controller has settled\n";

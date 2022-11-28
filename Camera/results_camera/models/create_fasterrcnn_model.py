@@ -1,4 +1,4 @@
-from models import fasterrcnn_resnet50_fpn
+from Camera.results_camera.models import fasterrcnn_resnet50_fpn
 
 def return_fasterrcnn_resnet50_fpn(
     num_classes, pretrained=True, coco_model=False

@@ -1,0 +1,1 @@
+from Camera.results_camera.inference import camera_inference

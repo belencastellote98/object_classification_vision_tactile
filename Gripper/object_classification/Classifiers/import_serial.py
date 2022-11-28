@@ -18,7 +18,7 @@ serial_port = serial.Serial(port_name,BAUD,timeout=PORT_TIMEOUT,write_timeout=PO
 serial_port.reset_input_buffer()
 
 def send(string):
-  print(f"Send: '{string}'")
+  # print(f"Send: '{string}'")
   try:
     serial_port.write(string.encode())
     return True
@@ -38,14 +38,14 @@ def test():
   send("pub-on\n")
   time.sleep(1)
   incomingByte = serial_port.readline()
-  print(incomingByte)
+  # print(incomingByte)
   time.sleep(1)
   if incomingByte==b'unknown command: init\n' or incomingByte==b'debug: ROBOTBRAG SETUP\n':
     send("sub S1 force all\n")
     time.sleep(0.1)
     send("sub S2 force all\n")
     time.sleep(0.1)
-
+  
   send("tact zcal\n")
   time.sleep(0.1)
   send("set pub-period 30\n")
@@ -59,6 +59,7 @@ def test():
   save_var=[]
   while gripper_testing:
     incomingByte = serial_port.readline()
+    # print(incomingByte)
     last_line = incomingByte.decode("utf-8").replace("\r","").replace("\t"," ")
     if len(incomingByte) == 85:
       data_str = list(last_line.split(" "))
@@ -77,5 +78,17 @@ def test():
   serial_port.close()
   # time.sleep(1)
   return save_var
+
+
+def char_obj():
+  send ("init\n")
+  send ("m home\n")
+  time.sleep(5)
+
+  # send ("char-obj 0\n")
+  # start_time = time.time()
+  # while(time.time()-start_time<30):
+  #   incomingByte = serial_port.readline()
+  #   print(incomingByte)
 
 
