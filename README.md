@@ -7,8 +7,7 @@ This repository is made in order to simplify the setup of real-sense camera and 
 2. [Set-up of Gripper from Graspian](#set-up-of-gripper-from-graspian)
 3. [Set-up of Camera Realsense depth camera D435](#set-up-of-camera-realsense-depth-camera-d435)
 4. [Train fasterrcnn_resnet50_fpn model from pytorch](#train-fasterrcnn_resnert50_fpn-model-from-pytorch)
-5. [Trained data inference code with realsense](#trained-data-inference-code-with-realsense)
-6. [Classifier selection](#classifier-selection)
+5. [Object classification](#object-classification)
 
 
 ## Set up of the repository and libraries used
@@ -47,15 +46,15 @@ Once everything is correctly install, open Visual Studio Code, and add the exten
 
 Click on the house icon in the bottom of the screen in VSC and select open project. 
 
-**ADD PICTURE**
+<img src="Edited_images_github/platformio.png" alt="Mode Button" width="600">
 
 Select the folder Gripper/gripper-software/gripper-software
 
-**ADD PICTURE**
+<img src="Edited_images_github/pio_select_project.png" alt="Mode Button" width="600">
 
 For this project, it is necessary to work on the robotbrag environment. Follow the steps in the picture:
 
-**ADD PICTURE**
+<img src="Edited_images_github/robotbrag_selection.png" alt="Mode Button" width="600">
 
 Once the usb cable is connected to the computer, click un upload. If it doesn't say succesful it is because some problem happened while uploading the code. **Check the cable connection and check that the user interface was not connected**
 In case the user interface is required to be used, run:
@@ -72,7 +71,7 @@ From now, it is necessary to check the device number of the camera:
 ```
 rs-enumerate-devices
 ```
-**ADD PICTURE**
+<img src="Edited_images_github/camera_device_number.png" alt="Mode Button" width="600">
 
 Open the connect_realsense.py, check the device number and if it is the same, run the code to check that the camera is correctly connected. If more help is needed, check on the examples given by the library [link](https://github.com/IntelRealSense/librealsense/tree/master/wrappers/python/examples)
 
@@ -82,14 +81,10 @@ The data was trained following the notebook given in the repo: [A Simple Pipelin
 - Roboflow: open dataset platform for object detection. See the used dataset for this project here [link](https://app.roboflow.com/ds/3llQvc8hux?key=vuPMmzDcdu)
 After the dataset is trained it is saved into Wandb. 
 
-## Trained data inference code with realsense
-Trained model is too heavy for GitHub. Click [here](https://drive.google.com/file/d/16cBtBJMuP7QN0XNezd8HHPmG1Ao24zVu/view?usp=share_link) to get the trained weights. It should be saved in Camera/results_camera
-Run the inference code to get the results:
-```
-python3 inference.py
-```
+## Object-classification
 
-**ADD PICTURE FOR RESULT ONCE THE DETECTED CODE IS RIGHT**
+The main script is object_classifiction.py. Once everything is setup, dataset and models are needed. You can get them by yourself or you can take the data from this [link](https://dtudk-my.sharepoint.com/:f:/g/personal/s212759_dtu_dk/EsNGD-Rg7b5Av-D8nHts4_ABq6ukV6yzAHnAbH3TQ11lTw?e=junQXfN). It is possible to change the model of the Faster R-CNN  and the tactile-based algorithm in this script. 
 
-## Classifier selection
+In order to perform with the dataset, download the data from here. Remember to save the data of the tactile in the path Gripper/object_classification/Classifiers/. The path for the Faster R-CNN model is specified in the inference.py script (Camera/results_camera/).
+
 
