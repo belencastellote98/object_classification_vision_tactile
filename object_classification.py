@@ -6,10 +6,10 @@ from Gripper.object_classification.Classifiers.KNN import KNN
 # SELECT THE ML ALGORITHM:
 algorithm = KNN
 metric = 'minkowski'
-# from Camera.results_camera.inference import camera_inference
+from Camera.results_camera.inference import camera_inference
 
-# pred_classes, orig_image = camera_inference()
-pred_classes = ['tomato']
+pred_classes, orig_image = camera_inference()
+
 print("The predicted objects are: ", pred_classes)
 
 
